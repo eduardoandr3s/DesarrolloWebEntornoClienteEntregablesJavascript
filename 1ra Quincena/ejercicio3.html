@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    <script language="JavaScript">
+
+
+var cantidad = 1;
+var texto = ""
+
+document.writeln("Bucle While:<br/>")
+cantidad = prompt("Dime una cantidad..."); 
+
+texto = prompt("Dime un texto...");
+
+var contador = 0;
+while(cantidad > 0){
+
+     contador++;
+document.write("El texto introducido es " + texto + ", impreso " + contador + ".<br/>");
+    cantidad--;
+
+}
+document.writeln("Bucle For:<br/>")
+cantidad = prompt("Dime una cantidad..."); 
+
+texto = prompt("Dime un texto...");
+
+
+ for (let index = 0; index < cantidad; index++) {
+     
+document.write("El texto introducido es " + texto + ", impreso " + (index+1) + ".<br/>");
+    
+    
+ }
+
+
+
+</script>
+</body>
+</html>

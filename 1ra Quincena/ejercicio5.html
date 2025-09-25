@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+// un numero a text (utilitzar switch i un vector) Nota: sols 1..6.   3 ----- tres 
+
+
+         let miNumero = parseInt(prompt("Dime un número del 1 al 6 y te lo transformaré a texto..."));
+            numToText(miNumero);
+        
+        function numToText(numero){
+            let vectorNumTexto = ["uno", "dos","tres","cuatro","cinco","seis"];
+            let numTransform = "";
+
+            switch(numero){
+              case 1:
+               numTransform = vectorNumTexto[0];       
+                break;
+              case 2:
+                numTransform = vectorNumTexto[1];      
+                break;
+                  case 3:
+                numTransform = vectorNumTexto[2];       
+                break;
+                  case 4:
+                 numTransform = vectorNumTexto[3];       
+                break;
+                  case 5:
+                 numTransform = vectorNumTexto[4];       
+                break;
+                  case 6:
+               numTransform = vectorNumTexto[5];       
+                break;
+                default:
+                    document.write("Sólo puedo transformar números del 1 al 6");
+            }
+            return document.writeln(numTransform);
+        }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+//E06. Escriure del numero A al B amb for i while
+
+      let numberA = parseInt(prompt("Dime un número menor que el segundo que te pediré..."));
+      let numberB = parseInt(prompt("Dime un número mayor que el anterior..."));
+
+      document.writeln("Bucle For: ");
+      for (let index = numberA; index <= numberB; index++) {
+        document.writeln(index);
+      }
+
+      document.writeln("</br> Bucle While: ");
+
+      var contador = numberA;
+      while(contador<=numberB){
+        
+        document.writeln(contador);
+        contador++;
+      }
+
+</script>
+</body>
+</html>
