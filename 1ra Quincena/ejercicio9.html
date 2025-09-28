@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E09. Demana un número per pantalla i verifica si es el mateix d’un
+número aleatori generat entre 1 i 10.*/
+                 
+          document.writeln("9)</br></br>");
+          
+                 let miNumero = prompt("Dime un número entre 1 y 10 y diré si acertaste...")
+
+                 if(miNumero >= 1 && miNumero <= 10){
+                
+                        let numeroRandom = parseInt((Math.floor(Math.random() * 10 ) + 1));
+
+                        if(miNumero == numeroRandom){
+                                document.writeln(`Felicitaciones, número premiado: ${numeroRandom} y usted eligió el ${miNumero}`); 
+                        }else {
+                            document.writeln(`Lo sentimos, número premiado: ${numeroRandom} y usted eligió el ${miNumero}`);
+                        }
+
+                 }else {
+                        document.writeln(`Introduce números entre 1 y 10, cualquier otro valor o dato no es válido.`)
+                 }
+
+          
+
+        
+        
+        
+
+</script>
+</body>
+</html>

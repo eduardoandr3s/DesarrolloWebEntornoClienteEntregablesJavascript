@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E11. Crea un vector (pot variar la longitud d’aquest), mostra el contingut
+especificant el número d’element i ordena el seu contingut.*/
+                 
+          document.writeln("11)</br></br>");
+          
+           let miVector = ["dsada", "dawqgg", "opqpq", "a", "qkkckm", "abc", "aa", "zop", "hahha"]    
+
+          document.writeln("<strong>Elementos del vector: </strong></br>")
+        for (let index = 0; index < miVector.length; index++) {
+            document.writeln(`Elemento ${index}: ${miVector[index]}</br>`);
+        }
+
+                  document.writeln("</br></br><strong>Elementos del vector ordenados: </strong></br>")
+
+        let miVectorOrdenado = miVector.sort(); 
+        for (let index = 0; index < miVectorOrdenado.length; index++) {
+            
+            document.writeln(`${miVector[index]}</br>`);
+
+        }
+        
+
+        
+        
+
+</script>
+</body>
+</html>

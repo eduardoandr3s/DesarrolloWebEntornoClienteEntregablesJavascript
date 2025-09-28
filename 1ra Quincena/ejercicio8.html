@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E08. Donada una cadena que llegim de teclat, mostra la següent
+informació (cadena llegida en ejemple és «hola MON»):
+La cadena ingresada es:hola MON
+La cantidad de caracteres son:8
+El primer carácter es:h
+Los primeros 3 caracteres son:hol
+aparece la subcadena hola
+La cadena convertida a mayúsculas es:HOLA MON
+La cadena convertida a minúsculas es:hola mon
+*/
+                 
+          document.writeln("8)</br></br>");
+          let miCadena = prompt("Dime una palabra, frase o texto que quieras que lea...")
+
+          document.writeln("La cadena ingresada es: <strong>"+miCadena+"</strong></br></br>");
+          document.writeln("La cantidad de caracteres son: <strong>"+miCadena.length+"</strong></br></br>");
+          document.writeln("El primer carácter es: <strong>"+ miCadena.slice(0,1) +"</strong></br></br>");
+          document.writeln("Los primeros 3 caracteres son: <strong>"+miCadena.slice(0,3)+"</strong></br></br>");
+          document.writeln("aparece la subcadena hola? <strong>"+miCadena.includes("hola")+"</strong></br></br>");
+          document.writeln("La cadena convertida a mayúsculas es: <strong>"+miCadena.toUpperCase()+"</strong></br></br>");       
+          document.writeln("La cadena convertida a minúsculas es: <strong>"+miCadena.toLowerCase()+"</strong></br></br>"); 
+</script>
+</body>
+</html>

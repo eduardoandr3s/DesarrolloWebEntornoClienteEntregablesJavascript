@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E12. Mostra la següent informació del navegador i la pantalla. Hi ha 2
+altures de pantalla, quina és la diferencia?*/
+                 
+          document.writeln("12)</br></br>");
+          
+      document.writeln("<strong>NAVEGADOR</strong></br>");  
+      document.writeln(`Nombre: ${navigator.appName}</br>`);
+      document.writeln(`Versión: ${navigator.appVersion}</br>`);
+      document.writeln(`Idioma: ${navigator.language}</br>`);
+      document.writeln(`Plataforma: ${navigator.platform}</br></br>`);
+      
+      document.writeln("<strong>PANTALLA</strong></br>");  
+      document.writeln(`Altura: ${screen.height}</br>`);
+      document.writeln(`Anchura: ${screen.width}</br>`);
+      document.writeln(`Altura 2: ${screen.availHeight}</br>`); ("Entiendo que es lo disponible (AVALAIBLE) para su uso por el navegador.")
+      document.writeln(`Número de bits por pixel: ${screen.pixelDepth}</br>`);
+
+</script>
+</body>
+</html>
