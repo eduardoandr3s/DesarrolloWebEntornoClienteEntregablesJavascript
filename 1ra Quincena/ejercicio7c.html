@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E07. Averiguar el màxim i el mínim d'uns números (realitza la
+comparació tu mateix al codi – No utilitzar mètodes de Math) :
+7.c) introduir números fins que s'indique "NO"*/
+                 
+          document.writeln("7.c)</br>");
+
+          let numerosHastaNO = [];
+          var numeroIntroducido = "";  
+
+                while(numeroIntroducido != "NO"){
+                numeroIntroducido = prompt("Dime un número, cuando quieras salir dime NO")
+                    
+                if( !isNaN(parseInt(numeroIntroducido))){
+                        
+                        numerosHastaNO.push(parseInt(numeroIntroducido));      
+                    }
+
+                }
+                console.log(numerosHastaNO)
+                var minimoC = numerosHastaNO[0];
+                var maximoC = numerosHastaNO[0];
+
+         for (let index = 0; index < numerosHastaNO.length; index++) {
+                if(minimoC > numerosHastaNO[index]){
+                    minimoC = numerosHastaNO[index];
+                }
+                 if(maximoC < numerosHastaNO[index]){
+                    maximoC = numerosHastaNO[index];
+                }
+         }   
+
+         document.writeln("El número mayor es "+maximoC+".</br>");
+         document.writeln("El número menor es "+minimoC+".</br></br>");
+
+</script>
+</body>
+</html>

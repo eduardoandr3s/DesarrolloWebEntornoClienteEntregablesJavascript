@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script language="JavaScript">
+/*E07. Averiguar el màxim i el mínim d'uns números (realitza la
+comparació tu mateix al codi – No utilitzar mètodes de Math) :
+
+7.b) introduint 5 números per teclat
+*/
+
+         document.writeln("7.b)</br>");
+
+ let numerosPorTeclado = Array(5);
+
+
+            for (let index = 0; index < numerosPorTeclado.length; index++) {
+                numerosPorTeclado[index] = parseInt(prompt("Dime el número " +(index+1)+":"));      
+            }
+                var minimoB = numerosPorTeclado[0];
+                var maximoB = numerosPorTeclado[0];
+
+         for (let index = 0; index < numerosPorTeclado.length; index++) {
+                if(minimoB > numerosPorTeclado[index]){
+                    minimoB = numerosPorTeclado[index];
+                }
+                 if(maximoB < numerosPorTeclado[index]){
+                    maximoB = numerosPorTeclado[index];
+                }
+         }   
+//105 33 1 99 7
+         document.writeln("El número mayor es "+maximoB+".</br>");
+         document.writeln("El número menor es "+minimoB+".</br></br>");
+         
+        
+
+</script>
+</body>
+</html>
