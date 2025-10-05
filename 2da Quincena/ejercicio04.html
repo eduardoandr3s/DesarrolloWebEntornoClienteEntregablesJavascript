@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+    <script language="JavaScript">
+   /*• E04. Obri 10 finestres distintes, una finestra cada 2 segons amb un
+setTimeout. Les distintes pàgines a obrir (url) les tenim a un vector. Cal
+recórrer aquest de manera circular. Després d’obrir-les totes tanca-les.  */
+
+let paginas = ["https://www.todofp.es",
+"https://www.aemet.es",
+"https://sede.agenciatributaria.gob.es"
+,"https://www.dgt.es"
+,"https://www.sanidad.gob.es",
+"https://www.san.gva.es",
+"https://ceice.gva.es",
+"https://www.infojobs.net",
+"https://www.linkedin.com/",
+"https://portal.edu.gva.es/aules/"]
+
+let contador = 0;
+let ventanas = []
+
+function abrirPaginas(){
+   
+     const url = paginas[contador] 
+     const ventana = window.open(url);
+     contador++;
+        ventanas.push(ventana);
+
+   if(contador >= paginas.length){
+        cerrarTodo();
+        exit();
+    }
+setTimeout(abrirPaginas, 2000);
+}    
+
+  function cerrarTodo(){
+  
+    for(const ventana of ventanas){
+      ventana.close();
+    }
+  }
+abrirPaginas();
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

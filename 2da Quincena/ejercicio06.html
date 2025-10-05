@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+    <script language="JavaScript">
+   /*E06. Obri finestres cada 3 segons amb un setInterval. Al segon d’obrir la
+finestra cal procedir a tancar-la (setTimeout)
+*/
+
+let paginas = ["https://www.todofp.es",
+"https://www.aemet.es",
+"https://sede.agenciatributaria.gob.es"
+,"https://www.dgt.es"
+,"https://www.sanidad.gob.es",
+"https://www.san.gva.es",
+"https://ceice.gva.es",
+"https://www.infojobs.net",
+"https://www.linkedin.com/",
+"https://portal.edu.gva.es/aules/"]
+
+let contador = 0;
+let intervalo;
+
+function abrirPaginas(){
+   
+     const url = paginas[contador] 
+     const ventana = window.open(url);
+     contador++;
+     setTimeout(() => ventana.close(), 1000)    
+
+   if(contador >= paginas.length-1){
+       contador = 0; 
+    }
+ 
+}  
+ abrirPaginas();
+  intervalo = setInterval(abrirPaginas, 3000);
+ 
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

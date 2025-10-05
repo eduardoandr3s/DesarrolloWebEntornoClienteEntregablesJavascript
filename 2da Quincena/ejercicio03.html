@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+    <script language="JavaScript">
+   /*• E03. Obri una finestra cada 2 segons amb un setInterval. Les distintes
+pàgines a obrir (url) les tenim a un vector. Cal recórrer aquest de
+manera circular.  */
+
+let paginas = ["https://www.todofp.es",
+"https://www.aemet.es",
+"https://sede.agenciatributaria.gob.es"
+,"https://www.dgt.es"
+,"https://www.sanidad.gob.es",
+"https://www.san.gva.es",
+"https://ceice.gva.es",]
+
+let contador = 0;
+let intervalo;
+
+function abrirPaginas(){
+
+        window.open(paginas[contador]);
+        contador++;
+  if(contador >= paginas.length){
+    contador = 0;
+  }
+}
+  function comenzar(){
+   intervalo = setInterval(abrirPaginas, 2000)
+  }
+
+  function terminar(){
+    clearInterval(intervalo);
+    intervalo = null;
+  }
+
+    </script>
+</head>
+<body>
+  
+  <input type="button" value="Comenzar" onclick="comenzar()">
+  <input type="button" value="Terminar" onclick="terminar()">
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+</head>
+<body>
+  <form id="formA" action="" method="get">
+    A: Ingresa clave (al menos 5 caracteres):
+    <input type="text" id="claveA" style="margin-bottom: 5px;" name="claveA">
+    <input type="button" value="Enviar" onclick="validarA()">
+  </form>
+
+ <form id="formB" action="" method="get" onsubmit="return validarB()">
+   B: Ingresa clave (al menos 5 caracteres):
+    <input type="text" id="claveB" style="margin-bottom: 5px;" name="claveB">
+    <input type="submit" value="Enviar">
+  </form>
+
+ <form id="formC" action="" method="get">
+   C: Ingresa clave (al menos 5 caracteres):
+    <input type="text" id="claveC" style="margin-bottom: 5px;" name="claveC">
+    <button type="button" onclick="validarC()">Enviar</button>
+  </form>
+
+  <form id="formD" action="" method="get" onsubmit="return validarD()">
+  D: Ingresa clave (al menos 5 caracteres):
+    <input type="text" id="claveD" style="margin-bottom: 5px;" name="claveD">
+    <button type="submit">Enviar</button>
+  </form>
+        
+    <script language="JavaScript">
+    function validarA() {
+      const campo = document.getElementById("claveA");
+      if (campo.value.length < 5) {
+        campo.value = "";
+        alert("La clave debe tener al menos 5 caracteres.");
+      } else {
+        document.getElementById("formA").submit();
+      }
+    }
+
+  function validarB() {
+      const campo = document.getElementById("claveB");
+      if (campo.value.length < 5) {
+        campo.value = "";
+        alert("La clave debe tener al menos 5 caracteres.");
+        return false; 
+      }
+      return true; 
+    }
+
+
+        function validarC() {
+      const campo = document.getElementById("claveC");
+      if (campo.value.length < 5) {
+        campo.value = "";
+        alert("La clave debe tener al menos 5 caracteres.");
+      } else {
+        document.getElementById("formC").submit();
+      }
+    }
+
+
+
+       function validarD() {
+      const campo = document.getElementById("claveD");
+      if (campo.value.length < 5) {
+        campo.value = "";
+        alert("La clave debe tener al menos 5 caracteres.");
+        return false;
+      }
+      return true;
+    }
+    </script>
+</body>
+</html>

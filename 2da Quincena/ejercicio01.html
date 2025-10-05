@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+    <script language="JavaScript">
+    let ventana = null;
+    function abrir(ancho, alto) {
+      const url = document.getElementById("pag1").value; 
+
+      if (url.trim() === "") {
+        alert("Por favor, escribe una dirección correcta.");
+        return;
+      }
+        ventana = window.open(url, "ventana1", `width=${ancho}, height=${alto}, resizable=yes`);
+    }
+
+   function cerrar() {
+      if (ventana && !ventana.closed) {
+        ventana.close();
+      } else {
+        alert("No hay una ventana abierta.");
+      }
+    }
+
+    </script>
+</head>
+<body>
+    <div>
+      <label for="pag1">Dirección de internet: </label>
+  <input type="text" id="pag1" placeholder="https://">
+
+  <input type="button" value="Abrir ventana" onclick="abrir(300, 300)">
+  <input type="button" value="Cerrar ventana" onclick="cerrar()">   
+    </div>
+
+       <div style="margin-top: 10px;">
+      <label for="pag1">Dirección de internet: </label>
+  <input type="text" id="pag1" placeholder="https://">
+
+  <input type="button" value="Abrir ventana" onclick="abrir(400, 600)">
+  <input type="button" value="Cerrar ventana" onclick="cerrar()">   
+    </div>
+ 
+
+</body>
+</html>

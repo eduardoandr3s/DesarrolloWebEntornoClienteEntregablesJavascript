@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="descripción">
+    <meta name="author" content="Edu Segovia">
+    <title>Document</title>
+
+</head>
+<body>
+
+
+
+
+        <h1>"Máximo 100"</h1>
+       
+          <textarea id="max100" rows="10" cols="50" placeholder="100 caracteres máximo"></textarea>
+          <br>
+            <button type="submit" id="mostrar">Mostrar</button>
+            <p id="resultado"></p>
+
+
+        
+    <script language="JavaScript">
+        document.getElementById("mostrar").addEventListener("click", function(){
+                    const textoEscrito = document.getElementById("max100").value;
+                    const resultado = document.getElementById("resultado");
+                    if(textoEscrito.length > 100 )
+                    {
+                        resultado.textContent = "Te has pasado de los 100 caracteres."
+                    }else{
+                            resultado.textContent = "Cantidad de caracteres: "+ textoEscrito.length + "  //  texto escrito:   " + textoEscrito;
+
+                    }
+    });
+
+    </script>
+</body>
+</html>
