@@ -1,0 +1,110 @@
+<!--E03. Crea una página con la siguiente funcionalidad:
+◦crea una cesta de la compra con cookies. 
+◦utiliza una (o mes) *cookie para almacenar los productos y las 
+unidades seleccionadas para la compra. 
+◦Incorporó uno boto para eliminar o vaciar el *carrito -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de compras</title>
+</head>
+
+<body style="display: flex; align-items: center; flex-direction: column;">
+
+    <h1 id="carrito">Carrito de compras</h1>
+    <div style="display: flex; justify-content: center;">
+        <h3 id="peras">Peras 0</h3><button style="margin: 10px;" onclick="agregarPeras()">Agregar</button>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <h3 id="manzanas">Manzanas 0</h3><button style="margin: 10px;" onclick="agregarManzanas()">Agregar</button>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <h3 id="arroz">Arroces 0</h3><button style="margin: 10px;" onclick="agregarArroz()">Agregar</button>
+    </div>
+    <div><button onclick="vaciarCarrito()">Vaciar Carrito</button></div>
+
+
+
+
+    <script language="JavaScript">
+        var contadorPeras = 0;
+        var contadorManzanas = 0;
+        var contadorArroz = 0;
+        const misCookies = document.cookie.split(';');
+        const cookiePeras = "contadorPeras=";
+        const cookieManzanas = "contadorManzanas=";
+        const cookieArroz = "contadorArroz=";
+        const elementoPeras = document.getElementById("peras");
+        const elementoManzanas = document.getElementById("manzanas");
+        const elementoArroz = document.getElementById("arroz");
+
+
+        for (let index = 0; index < misCookies.length; index++) {
+            let cookie = misCookies[index].trim();
+
+            if (cookie.indexOf(cookiePeras) == 0) {
+
+                contadorPeras = cookie.substring(cookiePeras.length, cookie.length);
+                elementoPeras.textContent = `Peras ${contadorPeras}`;
+
+            } else if (cookie.indexOf(cookieManzanas) == 0) {
+                contadorManzanas = cookie.substring(cookieManzanas.length, cookie.length);
+                elementoManzanas.textContent = `Manzanas ${contadorManzanas}`;
+
+            } else if (cookie.indexOf(cookieArroz) == 0) {
+                contadorArroz = cookie.substring(cookieArroz.length, cookie.length);
+                elementoArroz.textContent = `Arroces ${contadorArroz}`;
+
+            }
+
+        }
+
+
+
+        const caducidad = new Date();
+       // caducidad.setTime(caducidad.getTime() + (10 * 60 * 1000));  no lo quise implementar, pero tampoco lo quise borrar.
+        document.cookie = `contadorPeras=${contadorPeras};`;
+        document.cookie = `contadorManzanas=${contadorManzanas};`;
+        document.cookie = `contadorArroz=${contadorArroz};`;
+
+
+        function agregarPeras() {
+            contadorPeras++;
+            elementoPeras.textContent = `Peras ${contadorPeras}`;
+            document.cookie = `contadorPeras=${contadorPeras};`;
+
+        }
+        function agregarArroz() {
+            contadorArroz++;
+
+            elementoArroz.textContent = `Arroces ${contadorArroz}`;
+            document.cookie = `contadorArroz=${contadorArroz};`;
+        }
+        function agregarManzanas() {
+            contadorManzanas++;
+
+            elementoManzanas.textContent = `Manzanas ${contadorManzanas}`;
+            document.cookie = `contadorManzanas=${contadorManzanas};`;
+        }
+        function vaciarCarrito() {
+            contadorPeras = 0;
+            contadorManzanas = 0;
+            contadorArroz = 0;
+
+            elementoPeras.textContent = `Peras ${contadorPeras}`;
+            elementoArroz.textContent = `Arroces ${contadorArroz}`;
+            elementoManzanas.textContent = `Manzanas ${contadorManzanas}`;
+            document.cookie = `contadorManzanas=0;`;
+            document.cookie = `contadorPeras=0;`;
+            document.cookie = `contadorArroz=0`;
+            
+        }
+
+
+    </script>
+
+</body>
+
+</html>

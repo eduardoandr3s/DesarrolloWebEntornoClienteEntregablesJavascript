@@ -1,0 +1,41 @@
+<!--E10. Crea una página con DOMO con la siguiente funcionalidad:
+◦Si hacemos *click sobre un enlace, abrimos 
+este.
+◦Si hacemos *click sobre «abrir todos» abrimos todos 
+los enlaces a distintas pestañas (hay que 
+evitar que este *hipervincle nos 
+redirija en otra página).
+◦El número de *hipervincles puede variar y 
+funcionará exactamente igual nuestro  
+código -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Abrir varios enlaces</title>
+</head>
+
+<body style="display: flex; align-items: center; flex-direction: column;">
+
+    <h1>Mis Enlaces</h1>
+    <a href="https://www.todofp.es" class="enlace" target="_blank" style="font-size: xx-large; margin: 5px;">TodoFP</a>
+    <a href="https://ceice.gva.es" class="enlace" target="_blank" style="font-size: xx-large; margin: 5px;">Ceice</a>
+    <a href="https://www.infojobs.net" class="enlace" target="_blank" style="font-size: xx-large; margin: 5px;">InfoJobs</a>
+    <a href="https://www.linkedin.com/" class="enlace" target="_blank" style="font-size: xx-large; margin: 5px;">LinedIn</a>
+    <a href="https://portal.edu.gva.es/aules/" class="enlace" target="_blank" style="font-size: xx-large; margin: 5px;">Aules</a>
+    <a id="todos" href="#" style="font-size: xx-large; margin: 5px;">Abrir Todos</a>
+
+    <script language="JavaScript">
+        
+        const elementoTodos = document.getElementById("todos");
+        elementoTodos.addEventListener("click", function (event){
+            event.preventDefault();
+            const todosMisEnlaces = document.querySelectorAll(".enlace");
+            todosMisEnlaces.forEach(function(enlace){
+                window.open(enlace.href, "_blank")
+              });     
+        });
+    </script>
+</body>
+</html>

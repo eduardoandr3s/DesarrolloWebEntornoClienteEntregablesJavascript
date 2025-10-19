@@ -1,0 +1,49 @@
+<!-- EE02. Crea una página con la siguiente funcionalidad:
+◦crea un *contador del número de vueltas entras a la *pagina en un 
+minuto. 
+◦Si no *eixsteix la *cookie, hay que crearla. 
+◦si ya existe, incrementar el número de visitas. 
+◦Mostrar el *nùmero de visitas actual dentro de un *h1. -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cantidad de visitas</title>
+</head>
+
+<body style="display: flex; align-items: center; flex-direction: column;">
+
+    <h1 id="contador">Contando visitas...</h1>
+
+    <script language="JavaScript">
+        var contador = null;
+        const misCookies = document.cookie.split(';');
+        const nombreCookie = "contadorVisitas=";
+
+
+        for (let index = 0; index < misCookies.length; index++) {
+            let cookie = misCookies[index].trim();
+
+
+            if (cookie.indexOf(nombreCookie) == 0) {
+                contador = cookie.substring(nombreCookie.length, cookie.length);
+            }
+
+        }
+        if (contador) {
+            contador = parseInt(contador) + 1;
+        } else { contador = 1; }
+
+        const elementoH1 = document.getElementById("contador");
+        elementoH1.textContent = `Has entrado en la página ${contador} veces dentro de este minuto.`
+
+        const caducidad = new Date();
+        caducidad.setTime(caducidad.getTime() + (60 * 1000));
+        document.cookie = `contadorVisitas=${contador}; expires=${caducidad.toGMTString()}`;
+
+    </script>
+
+</body>
+
+</html>

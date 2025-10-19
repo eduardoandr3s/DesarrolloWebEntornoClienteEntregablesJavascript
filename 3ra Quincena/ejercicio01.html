@@ -1,0 +1,137 @@
+ <!-- E01. Crea un *ahorcado:
+◦ Las palabras para el juego las saquemos de un vector de 8 posiciones de donde se
+seleccionará una aleatoriamente para cada una de las partidas.
+◦ Las palabras sueño de longitud variable (*max 15)
+◦ una letra puede aparecer mes de una vuelta en la palabra.
+◦ palabras: mueble, cola, noviembre, puerta, septiembre, cuadro, cuatro,
+*hipervincle.
+◦ al fallar 7 vueltas el juego acaba y se da la *posibilitat de volver a
+*escomençar mostrando la palabra de la *sol·lucio. se muestra en el campo
+vidas, las opciones que te quedan
+◦ Si existe la letra en alguna *posicio, *escriurela en la casilla
+correspondiente y se muestra un mensaje en el campo felicitando al jugador.
+si no existe la letra, se resta una vida y se indica el error. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del Ahorcado</title>
+</head>
+<body style="display: flex; align-items: center; flex-direction: column;">
+
+    <h1>Juego del Ahorcado</h1>
+
+    <div id="juego">
+        
+        <div id="palabra-container" style="display: flex; justify-content: center; gap: 5px;">
+            </div>
+
+        <div id="info">
+            <p>Vidas restantes: <span id="vidas">7</span></p>
+            <p>Mensajes: <span id="mensajes">¡Introduce una letra para empezar!</span></p>
+            <div>
+                <label for="letra">Letra:</label>
+                <input type="text" id="letra" maxlength="1">
+                <button onclick="comprobarLetra()">Comprobar</button>
+                <button id="reinicio" onclick="iniciarJuego()" style="margin-top: 2px;">Volver a Empezar</button>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const palabras = ["moble", "cua", "novembre", "porta", "setembre", "quadre", "quatre", "hipervincle"];
+        let palabraSecreta = "";
+        let palabraMostrada = [];
+        let vidas = 7;
+
+        const palabraContainer = document.getElementById("palabra-container");
+        const vidasSpan = document.getElementById("vidas");
+        const mensajesSpan = document.getElementById("mensajes");
+        const letraInput = document.getElementById("letra");
+        const reinicioBtn = document.getElementById("reinicio");
+
+        function iniciarJuego() {
+            vidas = 7;
+            palabraMostrada = [];
+            letraInput.disabled = false;
+
+            const indiceAleatorio = Math.floor(Math.random() * palabras.length);
+            palabraSecreta = palabras[indiceAleatorio];
+
+            for (let i = 0; i < palabraSecreta.length; i++) {
+                palabraMostrada.push("_");
+            }
+
+            actualizarPantalla();
+            mensajesSpan.textContent = "Esperando nueva letra";
+        }
+
+        function actualizarPantalla() {
+            palabraContainer.innerHTML = "";
+            
+            palabraMostrada.forEach(letra => {
+                const letraBox = document.createElement("div");
+                letraBox.style.width = "40px";
+                letraBox.style.height = "40px";
+                letraBox.style.border = "1px solid";
+                letraBox.style.display = "flex";
+                letraBox.style.justifyContent = "center";
+                letraBox.style.alignItems = "center";
+                letraBox.style.fontSize = "24px";
+                letraBox.style.fontWeight = "bold";
+                letraBox.textContent = letra;
+                palabraContainer.appendChild(letraBox);
+            });
+
+            vidasSpan.textContent = vidas;
+        }
+
+        function comprobarLetra() {
+            const letra = letraInput.value.toLowerCase();
+
+            if (!letra) {
+                mensajesSpan.textContent = "Por favor, introduce una letra.";
+                return;
+            }
+
+            let acierto = false;
+            for (let i = 0; i < palabraSecreta.length; i++) {
+                if (palabraSecreta[i] === letra) {
+                    palabraMostrada[i] = letra;
+                    acierto = true;
+                }
+            }
+
+            if (acierto) {
+                mensajesSpan.textContent = "¡Bien hecho! Has acertado.";
+            } else {
+                vidas--;
+                mensajesSpan.textContent = `NO ESTÁ. Te quedan ${vidas} vidas.`;
+            }
+
+            letraInput.value = "";
+            actualizarPantalla();
+            comprobarFinDeJuego();
+        }
+
+        function comprobarFinDeJuego() {
+            if (!palabraMostrada.includes("_")) {
+                mensajesSpan.textContent = "¡FELICIDADES, HAS GANADO!";
+                finalizarPartida();
+            } else if (vidas <= 0) {
+                mensajesSpan.textContent = `Has perdido. La palabra era: ${palabraSecreta}`;
+                finalizarPartida();
+            }
+        }
+
+        function finalizarPartida() {
+            letraInput.disabled = true;
+        }
+        
+        iniciarJuego();
+    </script>
+
+</body>
+</html>
