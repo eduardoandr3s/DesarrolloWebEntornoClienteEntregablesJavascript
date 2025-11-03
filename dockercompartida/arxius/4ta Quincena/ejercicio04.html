@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 03</title>
+
+
+    <!--
+    E03. Tenemos un archivo donde guardamos las noticías con formato XML. Las
+noticías las guardamos como se muestra a la tabla siguiente. Hay que formatear
+mostrando el nombre del usuario en un *h1, a continuación la fecha en un *h3 y el
+comentario en un párrafo. 
+
+
+• E04. *Idem con el anterior con la modificación de que el campo AUTOR puede
+no *apareixer. Si no tenemos AUTOR a una noticía *utilitarem un *Anonim para
+ este valor. 
+
+ -->
+
+    <script type="text/javascript">
+        var peticion_http;
+
+        function leerRespuesta() {
+            if (peticion_http.readyState == 4) {
+                if (peticion_http.status == 200) {
+                    const xml = peticion_http.responseXML;
+                    mostrarNoticias(xml);
+                } else {
+                    alert("error: " + peticion_http.status + " , " + peticion_http.statusText);
+                }
+            }
+        }
+
+        function cargarNoticias() {
+            if (window.XMLHttpRequest) {
+                peticion_http = new XMLHttpRequest();
+
+            }
+            peticion_http.onreadystatechange = leerRespuesta;
+            peticion_http.open('GET', './noticias04.xml', true);
+            peticion_http.send(null);
+        }
+
+
+        function mostrarNoticias(xmlDocumento) {
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+
+            const noticias = xmlDocumento.getElementsByTagName("NOTICIA");
+            for (let i = 0; i < noticias.length; i++) {
+                const element = noticias[i];
+
+                fec = element.getElementsByTagName("DATA");
+                fecha = fec[0].firstChild.data;
+               
+                if (element.getElementsByTagName("AUTOR").length == 0) {
+                    autor = "Anonim";
+                } else {
+                   aut = element.getElementsByTagName("AUTOR");
+                    autor = aut[0].firstChild.data;
+                }
+             
+                com = element.getElementsByTagName("COMENTARI");
+                comentario = com[0].firstChild.data;
+
+                const div = document.createElement("div");
+
+                div.innerHTML = "<h1>" + autor + "</h1>" +
+                    "<h3>" + fecha + "</h3>" +
+                    "<p>" + comentario + "</p>"
+                resultado.appendChild(div);
+            }
+
+        }
+        window.onload = function () {
+            document
+                .getElementById("btnCargar")
+                .addEventListener("click", cargarNoticias, false)
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h2>E04 - Noticias desde un XML </h2>
+    <button id="btnCargar"
+        style="border-radius: 2px; background-color: lightgreen; padding: 15px; margin: 10px; font-size: x-large;">Carga
+        La Noticia</button>
+    <div id="resultado" style="margin: 10px; border: 2px solid black; padding: 10px; background-color: blanchedalmond;">
+    </div>
+</body>
+
+</html>

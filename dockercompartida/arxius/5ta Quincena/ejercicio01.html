@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 01 CouchDB</title>
+</head>
+<body style="background-color: beige;">
+
+  <!-- E01. Tenemos una estructura *json usuarios que representa un vector 
+de usuarios. Realizar una conexión *ajax que muestro el contenido a la capa. 
+Muestra el nombre en un *titol 2 y la edad y la ciudad en un *paragraf separados por 
+«-+-+-» -->
+  <h2>Ejercicio 01 CouchDB</h2>
+  <p>
+  
+  <iframe width="448" height="252" 
+src="https://www.youtube.com/embed/xru5FreD97w?si=iExrnm6bfflraJEi" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </p>
+  <button style="padding: 15px; border-radius: 25px; background-color: lightblue;" onclick="obtenerUsuario()">Consultar</button>
+  <pre id="resultado"></pre>
+  <script>
+    async function obtenerUsuario() {
+      const usuario = 'admin';
+      const contrasena = 'admin';
+      const credenciales = btoa(`${usuario}:${contrasena}`); //base64
+      try {
+        const respuesta = await fetch('http://localhost:5984/ejemplo/usuarios1000', {
+          headers: {
+            'Authorization': `Basic ${credenciales}`
+          }
+        });
+        
+        if (!respuesta.ok) {
+          throw new Error(`Error al obtener el documento: ${respuesta.status}`);
+        }
+        const datos = await respuesta.json();
+        var html = "";
+        if (datos && datos.usuarios) {
+          datos.usuarios.forEach(u => {
+            html += "<h2>"+u.nombre+"</h2>";
+            html += "<p>"+u.edad+" -+-+- "+u.ciudad+"</p>";
+
+          });
+
+            document.getElementById('resultado').innerHTML = html;
+
+        } else {
+          throw new Error('El documento no cuenta conla propiedad "usuarios".');
+        }
+
+
+      } catch (error) {
+        document.getElementById('resultado').textContent = 'Error: ' + 
+error.message;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AJAX</title>
+<meta name="description" content="descripcio">
+<meta name="author" content="Jose Masip">
+<script src="a.js"></script>
+</head>
+<body>
+
+<!-- E04. Queremos crear una página que simulo la gestión de un *parking. Para tal 
+fin, crear una base de datos *parking y dentro de dos documentos:
+ - Clientes: Usuarios registrados al *parking.
+ - Coches: Coches de los clientes identificados y *asignats a un usuario.
+
+- Cuando cargamos la página llenaremos el *select de clientes con el *dni 
+del cliente a trabas de una consulta *ajax.
+- Cuando cargamos la página llenaremos el *select de coches con todos los 
+coches a trabas de una consulta *ajax.
+
+ - Al seleccionar un cliente actualizaremos las matriculas del *select para 
+solo mostrar las de este usuario.
+ - Al seleccionar una matricula llenaremos los detalles del coche. -->
+
+
+  <h1 align="center">Gesti&oacute; d'un parking</h1>
+<form name="formulari"> 
+  <table align="center">
+ 
+ 
+    <tr>
+<td width="60">client</td>
+<td>
+<select id="sclient">
+<option value="-1"> selecciona una opcio
+</select>
+<input type="text" id="cclient" />
+<img src="ima/buscar.jpeg" alt="buscar client" id="fclient" width="18">
+<div id="mclient"></div>
+</td>
+  </tr>
+
+
+<td width="60">matricula</td>
+<td>
+<select id="smatricula">
+<option value="-1"> selecciona una opcio
+</select>
+<input type="text" id="cmatricula" />
+<img src="ima/buscar.jpeg" alt="buscar matricula" id="fmatricula" 
+width="18">
+<div id="mmatricula"></div>
+</td>
+  </tr>
+
+  <tr>
+<td>data</td>
+<td><input type="text" id="data" size="40" disabled>
+<img src="ima/trianguloa.jpg" alt="mostrar detall" width="18" 
+onmouseover="javascript:document.getElementById('detall').style.visibility='visible';
+document.getElementById('detall').style.height=170">
+
+<img src="ima/triangulob.jpg" alt="ocultar detall" width="18" 
+onmouseover="javascript:document.getElementById('detall').style.visibility='hidden';
+document.getElementById('detall').style.height=10">
+
+</td>
+  </tr>
+  </table>
+<div id="detall">
+  <table align="center">
+  <tr>
+<td>matricula</td>
+<td><input type="text" id="matricula" size="44" disabled></td>
+  </tr>
+  <tr>
+<td>marca</td>
+<td><input type="text" id="marca" size="44" disabled></td>
+  </tr>
+  <tr>
+<td>model</td>
+<td><input type="text" id="model" size="44" disabled></td>
+  </tr>
+  <tr>
+<td>color</td>
+<td><input type="text" id="color" size="44" disabled></td>
+  </tr>
+  <tr>
+<td width="60">dni</td>
+<td><input type="text" id="dni" size="44" disabled></td>
+  </tr>
+  <tr>
+<td width="60">nom</td>
+<td><input type="text" id="nom" size="44" disabled></td>
+  </tr>
+  <tr>
+<td width="60">direccio</td>
+<td><input type="text" id="direccio" size="44" disabled></td>
+  </tr>
+  <tr>
+<td width="60">poblacio</td>
+<td><input type="text" id="poblacio" size="44" disabled></td>
+  </tr>
+  <tr>
+<td width="60">sexe</td>
+<td><input type="text" id="sexe" size="44" disabled></td>
+  </tr>
+</table>
+</div>
+<center><input type=button name="boto" value="entrada parking"></center>
+</form> 
+
+
+<script>
+       const clientes = await obtenerDni();
+        //obtenerCoches();
+      
+</script>
+</body>
+</html>

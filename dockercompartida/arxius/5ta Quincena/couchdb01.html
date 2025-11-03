@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta CouchDB</title>
+</head>
+<body>
+  <h2>Consulta couchdb</h2>
+  <p>
+  
+  <iframe width="560" height="315" 
+src="https://www.youtube.com/embed/xru5FreD97w?si=iExrnm6bfflraJEi" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </p>
+  <button onclick="obtenirUsuari()">Consultar</button>
+  <pre id="resultat"></pre>
+  <script>
+    async function obtenirUsuari() {
+      const usuari = 'admin';
+      const contrasenya = 'admin';
+      const credencials = btoa(`${usuari}:${contrasenya}`); //base64
+      try {
+        const resposta = await fetch('http://localhost:5984/ejemplo/usuari123', {
+          headers: {
+            'Authorization': `Basic ${credencials}`
+          }
+        });
+        
+        if (!resposta.ok) {
+          throw new Error(`Error al obtenir el document: ${resposta.status}`);
+        }
+        const dades = await resposta.json();
+        document.getElementById('resultat').innerHTML = 
+"<h1>"+dades.nombre+"</h1><p>"+dades.edad+"</p><p>"+dades.ciudad+"</p> ";
+      } catch (error) {
+        document.getElementById('resultat').textContent = 'Error: ' + 
+error.message;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 03 CouchDB</title>
+</head>
+
+<body style="background-color: beige;">
+
+    <!-- E03. Tenemos un *json donde guardamos las noticías. De las noticías guardamos los 
+datos como se muestra a la tabla siguiente. Hay que formatear mostrando el nombre 
+del usuario en un *h1, a continuación la fecha en un *h3 y el comentario en un 
+párrafo. Obtener los datos en una consulta AJAX. -->
+    <h2>Ejercicio 03 CouchDB</h2>
+    <p>
+
+        <iframe width="358" height="202" src="https://www.youtube.com/embed/xru5FreD97w?si=iExrnm6bfflraJEi"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </p>
+    <button style="padding: 15px; border-radius: 25px; background-color: lightblue;"
+        onclick="obtenerNoticias()">Consultar</button>
+    <pre style="margin-left: 10px;" id="resultado"></pre>
+    <script>
+        async function obtenerNoticias() {
+            const usuario = 'admin';
+            const contrasena = 'admin';
+            const credenciales = btoa(`${usuario}:${contrasena}`); //base64
+            try {
+                const respuesta = await fetch('http://localhost:5984/ejemplo/noticias03', {
+                    headers: {
+                        'Authorization': `Basic ${credenciales}`
+                    }
+                });
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error al obtener el documento: ${respuesta.status}`);
+                }
+                const datos = await respuesta.json();
+                var html = "";
+                if (datos && datos.noticias) {
+                    datos.noticias.forEach(u => {
+                        html += "<h1>" + u.usuario + "</h1>";
+                        html += "<h3>" + u.fecha + "</h3>";
+                        html += "<p>" + u.comentario + "</p>";
+                        html += "____________________________________________________";
+                    });
+
+                    document.getElementById('resultado').innerHTML = html;
+
+                } else {
+                    throw new Error('El documento no cuenta conla propiedad "noticias".');
+                }
+
+
+            } catch (error) {
+                document.getElementById('resultado').textContent = 'Error: ' +
+                    error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 02 CouchDB</title>
+</head>
+
+<body style="background-color: beige;">
+
+    <!-- E02. Dado el *json que se muestra a continuación de la *cdteca. Formatea 
+este en una tabla para cada uno de los *cd’s. *Obtin los datos a trabas 
+de una consulta *ajax. -->
+    <h2>Ejercicio 02 CouchDB</h2>
+    <p>
+
+        <iframe width="448" height="252" src="https://www.youtube.com/embed/xru5FreD97w?si=iExrnm6bfflraJEi"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </p>
+    <button style="padding: 15px; border-radius: 25px; background-color: lightblue;"
+        onclick="obtenerCdteca()">Consultar</button>
+    <pre id="resultado"></pre>
+    <script>
+        async function obtenerCdteca() {
+            const usuario = 'admin';
+            const contrasena = 'admin';
+            const credenciales = btoa(`${usuario}:${contrasena}`); //base64
+            try {
+                const respuesta = await fetch('http://localhost:5984/ejemplo/cdteca', {
+                    headers: {
+                        'Authorization': `Basic ${credenciales}`
+                    }
+                });
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error al obtener el documento: ${respuesta.status}`);
+                }
+                const datos = await respuesta.json();
+                var html = "";
+                if (datos && datos.CATALEG.CD) {
+                    datos.CATALEG.CD.forEach(u => {
+                        html += "</br><table border='2' style='background-color: aqua;'><tr><td rowspan='5'>carátula cd</td>";
+                        html += "<td>" + u.TITOL + "</td></tr>";
+                        html += "<tr><td>" + u.ARTISTA + "</td></tr>";
+                        html += "<tr><td>" + u.PAIS + "</td></tr>";
+                        html += "<tr><td>" + u.PREU + "</td></tr>";
+                        html += "<tr><td>" + u.ANY + "</td></tr></table>";
+                    });
+
+                    document.getElementById('resultado').innerHTML = html;
+
+                } else {
+                    throw new Error('El documento no cuenta conla propiedad "CATALEG".');
+                }
+
+
+            } catch (error) {
+                document.getElementById('resultado').textContent = 'Error: ' +
+                    error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>

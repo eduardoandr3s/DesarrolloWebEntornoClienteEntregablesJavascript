@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 01</title>
+
+
+<!-- E01. Tenemos un archivo donde guardamos las noticías. Las noticías las guardamos
+como se muestra a la tabla siguiente. Hay que formatear mostrando el nombre del
+ usuario en un *h1, a continuación la fecha en un *h3 y el comentario en un
+párrafo. 
+data:usuari:comentari de la noticia escrit per usuari
+ 27-12-2012:juanito:comentari de la noticia
+ 1-12-2012:manuel:asdf asdf asdf asdf asdf asdf asdf asdf asdf
+ 11-11-2010:juanito:asdf jklñ jklñ jklñ jklñ jklñ jklñ jklñ
+ -->
+
+    <script type="text/javascript">
+        var peticion_http;
+
+        function leerRespuesta(){
+            if (peticion_http.readyState == 4) {
+                if (peticion_http.status == 200) {
+                    mostrarNoticias(peticion_http.responseText);
+                }else {
+                    alert("error: " + peticion_http.status + " , " + peticion_http.statusText);
+                }   
+            }
+        }
+
+        function cargarNoticias(){
+            if (window.XMLHttpRequest) {
+            peticion_http = new XMLHttpRequest();
+
+            }
+            peticion_http.onreadystatechange = leerRespuesta;
+            peticion_http.open('GET', './noticias01.txt', true);
+            peticion_http.send(null);
+        }
+        function mostrarNoticias(texto){
+            const noticia = document.getElementById("resultado");    
+            noticia.innerHTML = "";
+            
+            const lineas = texto.split("\n").map(linea => linea.trim()).filter(linea => linea.length > 0);
+            for (let linea = 0; linea < lineas.length; linea++) {
+                    const partes = lineas[linea].split(":");
+
+                    if (partes.length < 3) {
+                        continue;
+                    }
+                    const fecha = partes[0].trim();
+                    const usuario = partes[1].trim();
+                    const comentario = partes[2].trim();
+                    const div = document.createElement("div");
+                    div.innerHTML = "<h1>" + usuario + "</h1>"+
+                                    "<h3>" + fecha + "</h3>" +
+                                    "<p>" + comentario + "</p>"
+                                    noticia.appendChild(div);
+            }
+        }
+        window.onload = function(){
+            document
+            .getElementById("btnCargar")
+            .addEventListener("click",cargarNoticias, false)
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+    <h2>E01 - Noticias desde un TXT </h2>
+    <button id="btnCargar" style="border-radius: 2px; background-color: lightgreen; padding: 15px; margin: 10px; font-size: x-large;">Carga La Noticia</button>
+    <div id="resultado" style="margin: 10px; border: 2px solid black; padding: 10px; background-color: blanchedalmond;"></div>
+</body>
+</html>
