@@ -1,0 +1,41 @@
+{
+  "_id": "parking_coches",
+  "_rev": "1-a5913d5c2e692411e6cfe3b45bb443d5",
+  "cotxes": [
+    {
+      "matricula": "1111asd",
+      "idclient": "21212121a",
+      "marca": "ford",
+      "modelo": "ka",
+      "color": "roig"
+    },
+    {
+      "matricula": "2345tre",
+      "idclient": "21212121a",
+      "marca": "ford",
+      "modelo": "focus",
+      "color": "negre"
+    },
+    {
+      "matricula": "6545try",
+      "idclient": "22222222a",
+      "marca": "ford",
+      "modelo": "kuga",
+      "color": "negre"
+    },
+    {
+      "matricula": "6754gfg",
+      "idclient": "25252525a",
+      "marca": "ford",
+      "modelo": "fiesta",
+      "color": "roig"
+    },
+    {
+      "matricula": "7867hgy",
+      "idclient": "23232323a",
+      "marca": "ford",
+      "modelo": "fiesta",
+      "color": "blau"
+    }
+  ]
+}

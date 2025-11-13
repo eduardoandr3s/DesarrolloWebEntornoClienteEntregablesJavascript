@@ -1,0 +1,48 @@
+{
+  "_id": "parking_clientes",
+  "_rev": "1-1248240385979b74dc0e1432f6bb60e5",
+  "clientes": [
+    {
+      "dni": "20202020a",
+      "nombre": "jose",
+      "via": "carrer",
+      "ciudad": "madrid",
+      "sexo": "home"
+    },
+    {
+      "dni": "21212121a",
+      "nombre": "luis",
+      "via": "avenida",
+      "ciudad": "valencia",
+      "sexo": "home"
+    },
+    {
+      "dni": "22222222a",
+      "nombre": "juan",
+      "via": "plaça",
+      "ciudad": "castello",
+      "sexo": "home"
+    },
+    {
+      "dni": "23232323a",
+      "nombre": "luis",
+      "via": "avenida",
+      "ciudad": "barcelona",
+      "sexo": "home"
+    },
+    {
+      "dni": "24242424a",
+      "nombre": "juana",
+      "via": "plaça",
+      "ciudad": "castello",
+      "sexo": "dona"
+    },
+    {
+      "dni": "25252525a",
+      "nombre": "luisa",
+      "via": "avenida",
+      "ciudad": "alicant",
+      "sexo": "dona"
+    }
+  ]
+}
