@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="ej1.js"></script>
+    <title>Ejercicio 1</title>
+</head>
+<body>
+
+<form method="post">
+        <label for="id">id:</label>    
+        <input style="margin: 10px;" type="number" id="id" min="1" max="100" required>
+        <br>
+        <label for="origen">origen:</label>    
+        <input style="margin: 10px;"type="text" id="origen" required>
+        <br>
+        <label for="desti">desti:</label>    
+        <input style="margin: 10px;" type="text" id="desti" required>
+        <br>
+        <label for="horaEixida">horaEixida:</label>    
+        <input style="margin: 10px;" type="time" id="horaEixida" required>
+        <br>
+        <label for="horaArribada">horaArribada:</label>    
+        <input style="margin: 10px;" type="time" id="horaArribada" required>
+        <br>
+        <button onclick="obtenerRodalies()" type="submit">Enviar rodali</button>
+</form>
+        <h3 id="resultado">
+            
+        </h3>
+    
+</body>
+</html>
