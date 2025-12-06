@@ -52,6 +52,7 @@ window.onload = async function obtenerRodalies() {
 
     }
   } catch (error) {
+    document.getElementById("resultado").textContent = "Error: " + error.message;
 
 
   }
