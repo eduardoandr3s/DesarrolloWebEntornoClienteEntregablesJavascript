@@ -75,7 +75,7 @@ window.onload = async function obtenerRodalies() {
 
         let actualizaRodali;
 
-            let id =document.getElementById('id').value;
+            let id = document.getElementById('id').value;
         
         rodaliesRows.forEach(roda=>{
                 

@@ -2,18 +2,29 @@ let rodalieEliminar;
 const usuario = "admin";
 const contrasena = "admin";
 const credenciales = btoa(`${usuario}:${contrasena}`); //base64
-const idEliminar = document.getElementById('id');
 
-async function obtenerRodalies() {
+
+
+    async function obtenerRodalies() {
+
   try {
+            const idEliminar = document.getElementById('idRodalie').value;
+
+            if(!idEliminar){
+                alert('El campo ID esta vacío.') 
+                return;
+
+            } 
     
-    const respuestaBBDD = await fetch(
+       const respuestaBBDD = await fetch(
      `http://localhost:5984/rodalies/${idEliminar}`,
       {
         headers: {
           'Authorization': `Basic ${credenciales}`,
         }
-      });
+      }); 
+    
+    
 
     if (!respuestaBBDD.ok)
       throw new Error(
@@ -25,7 +36,7 @@ async function obtenerRodalies() {
         document.getElementById('rev').value = datos._rev;
         eliminarRodalie(datos._id, datos._rev);
 
-           document.getElementById('resultado').innerHTML = `<p>Rodali eliminado correctamente ID: ${resultado.id} --- Rev: ${resultado.rev}</p>`;
+           //document.getElementById('resultado').innerHTML = `<p>Rodali eliminado correctamente ID: ${resultado.id} --- Rev: ${resultado.rev}</p>`;
 
       }
 
@@ -33,7 +44,7 @@ async function obtenerRodalies() {
         document.getElementById("resultado").textContent = "Error: " + error.message;
 
   }
-};
+}; 
 
 
 
